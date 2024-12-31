@@ -1,20 +1,19 @@
 import 'package:clean_architecture_and_bloc/core/theme/app_pallet.dart';
-import 'package:clean_architecture_and_bloc/features/auth/presentation/pages/login_page.dart';
+import 'package:clean_architecture_and_bloc/features/auth/presentation/pages/signup_page.dart';
 import 'package:clean_architecture_and_bloc/features/auth/presentation/widgets/auth_field.dart';
 import 'package:clean_architecture_and_bloc/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static route() =>
-      MaterialPageRoute(builder: ((context) => const SignUpPage()));
-  const SignUpPage({super.key});
+      MaterialPageRoute(builder: ((context) => const LoginPage()));
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  final nameController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -22,7 +21,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
   }
@@ -39,15 +37,11 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Sign up',
+                'Login',
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 30,
-              ),
-              AuthField(controller: nameController, hint: 'Name'),
-              SizedBox(
-                height: 15,
               ),
               AuthField(controller: emailController, hint: 'Email'),
               SizedBox(
@@ -62,21 +56,21 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 15,
               ),
               AuthGradientButton(
-                  buttonText: 'Sign Up',
+                  buttonText: 'Login',
                   onPressed: () {
                     if (formKey.currentState!.validate()) {}
                   }),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, LoginPage.route());
+                  Navigator.push(context, SignUpPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already have account ?',
+                      text: 'Dont have account?',
                       style: Theme.of(context).textTheme.titleMedium,
                       children: [
                         TextSpan(
-                            text: 'Sign In',
+                            text: 'Sign Up',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium

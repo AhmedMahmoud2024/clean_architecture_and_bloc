@@ -14,7 +14,9 @@ class AuthField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(hintText: hint),
+      decoration: InputDecoration(
+          hintText: hint,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
       validator: (value) {
         if (value!.isEmpty) {
           return "$hint is missing!";
